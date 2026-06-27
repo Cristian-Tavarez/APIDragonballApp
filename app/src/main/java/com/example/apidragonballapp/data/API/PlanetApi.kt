@@ -13,7 +13,8 @@ data class PlanetResponse(
 data class SimplePlanetDto(
     val id: Int,
     val name: String,
-    val description: String
+    val description: String,
+    val image: String
 )
 
 interface PlanetApi {
