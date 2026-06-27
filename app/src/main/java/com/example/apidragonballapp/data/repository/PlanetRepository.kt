@@ -3,6 +3,7 @@ package com.example.apidragonballapp.data.repository
 import com.example.apidragonballapp.Resource.NetworkResult
 import com.example.apidragonballapp.data.API.PlanetApi
 import com.example.apidragonballapp.domain.model.Planet
+import com.example.apidragonballapp.domain.model.Character
 import javax.inject.Inject
 
 class PlanetRepository @Inject constructor(
@@ -19,4 +20,23 @@ class PlanetRepository @Inject constructor(
             NetworkResult.Error(e.localizedMessage ?: "Error de conexión")
         }
     }
+
+suspend fun getCharactersFromApi(): NetworkResult<List<Character>> {
+    return try {
+        val response = api.getCharacters()
+        val domainCharacters = response.items.map { dto ->
+            Character(
+                id = dto.id,
+                name = dto.name,
+                ki = dto.ki,
+                race = dto.race,
+                description = dto.description,
+                image = dto.image
+            )
+        }
+        NetworkResult.Success(domainCharacters)
+    } catch (e: Exception) {
+        NetworkResult.Error(e.localizedMessage ?: "Error al cargar personajes")
+    }
+}
 }
