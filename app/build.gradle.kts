@@ -79,7 +79,8 @@ dependencies {
     implementation("androidx.compose.material3.adaptive:adaptive:1.0.0")
     implementation("androidx.compose.material3.adaptive:adaptive-layout:1.0.0")
     implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.3.0")
-
+    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation(libs.coil.compose)
 
 
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.4")
