@@ -12,7 +12,7 @@ class PlanetRepository @Inject constructor(
         return try {
             val response = api.getPlanets()
             val domainPlanets = response.items.map { dto ->
-                Planet(id = dto.id, name = dto.name, description = dto.description)
+                Planet(id = dto.id, name = dto.name, description = dto.description, image = dto.image)
             }
             NetworkResult.Success(domainPlanets)
         } catch (e: Exception) {
